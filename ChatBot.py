@@ -1,17 +1,10 @@
 import random
-
 import time
-
 import tkinter
-
 from tkinter import *
-
 import growthRate
-
 import cUpdates
-
 import graphs
-
 import matplotlib.pyplot as plt
 import requests
 import numpy as np
@@ -135,7 +128,7 @@ def main():
             capcountry1 = ord(country[0])-32
             capcountry2 = chr(capcountry1)
             capcountry3 = country.replace(country[0], capcountry2)
-            for ' ' in country:
+            for i in range(country.count(" ")):
                 capcountry4 = country.find(' ')
                 capcountry5 = ord(country[capcountry4])
                 capcountry6 = chr(capcountry5)
@@ -198,7 +191,7 @@ def main():
             capcountry1 = ord(country[0])-32
             capcountry2 = chr(capcountry1)
             capcountry3 = country.replace(country[0], capcountry2)
-            for ' ' in country:
+            for i in range(country.count(' ')):
                 capcountry4 = country.find(' ')
                 capcountry5 = ord(country[capcountry4])
                 capcountry6 = chr(capcountry5)
