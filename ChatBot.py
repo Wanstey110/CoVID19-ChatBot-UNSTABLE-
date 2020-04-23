@@ -48,7 +48,24 @@ def main():
             getResponse(f'{num}. {i}')
 
         getResponse('If yes, please select the symptoms you have been feeling using their number, and seperate each symptom with a comma. Reply no if you do nat have these symptoms. (You should probably refresh before answering).')
+    def cUpdateIndia():
+        url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api"
+        headers = {
+            'x-rapidapi-host': "corona-virus-world-and-india-data.p.rapidapi.com",
+            'x-rapidapi-key': "b087d3c483msha78ec3f9ef8104cp1b83e5jsn6eb7ac519d97"
+        }
+        response = requests.request("GET", url, headers=headers)
+        r = response.text
+        r2 = json.loads(r)
 
+        casesInd = int(r2["countries_stat"][20]["cases"].replace(",", ""))
+        deathsInd = int(r2["countries_stat"][20]["deaths"].replace(",", ""))
+        recoveredInd = int(r2["countries_stat"][20]["total_recovered"].replace(",", ""))
+
+        mortalityRateInd = (deathsInd / casesInd) * 100
+        mortalityRateInd = f"{round(mortalityRateInd,2)}% (2dp)"
+
+        return f"Stats:\nConfirmed: {casesInd}\nDeaths: {deathsInd}\nRecovered: {recoveredInd}\nMortality Rate:{mortalityRateInd}\nRecovery Rate: {recoveredInd}"
 
 
     def sympcheckPart2(symptoms):
@@ -114,6 +131,15 @@ def main():
         plt.ylabel('Cases')
         if country == 'us':
             capcountry3 = 'U.S.A.'
+        elif ' ' in country:
+            capcountry1 = ord(country[0])-32
+            capcountry2 = chr(capcountry1)
+            capcountry3 = country.replace(country[0], capcountry2)
+            for ' ' in country:
+                capcountry4 = country.find(' ')
+                capcountry5 = ord(country[capcountry4])
+                capcountry6 = chr(capcountry5)
+                capcountry3 = country.replace(country[capcountry4], capcountry6)
         else:
             capcountry1 = ord(country[0])-32
             capcountry2 = chr(capcountry1)
@@ -168,6 +194,15 @@ def main():
         plt.ylabel('Death')
         if country == 'us':
             capcountry3 = 'U.S.A.'
+        elif ' ' in country:
+            capcountry1 = ord(country[0])-32
+            capcountry2 = chr(capcountry1)
+            capcountry3 = country.replace(country[0], capcountry2)
+            for ' ' in country:
+                capcountry4 = country.find(' ')
+                capcountry5 = ord(country[capcountry4])
+                capcountry6 = chr(capcountry5)
+                capcountry3 = country.replace(country[capcountry4], capcountry6)
         else:
             capcountry1 = ord(country[0])-32
             capcountry2 = chr(capcountry1)
@@ -621,7 +656,8 @@ def main():
         elif chat == 'updateworld':
 
             answer = cUpdates.cUpdateWorld()
-
+        elif chat == 'updateindia':
+            answer = cUpdateIndia()
         
 
         elif chat=='updataustralia' or chat == 'updateusa' or chat == 'updatecanada' or chat == 'updatechina' or chat == 'updateamerica' or chat == 'updateus' or chat == 'updateengland' or chat == 'updateuk' or chat == 'updatebritain' or chat == 'updategreatbritain' or chat == 'updateunitedkingdom' or chat == 'updatefrance':
