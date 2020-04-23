@@ -760,6 +760,9 @@ def main():
             if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
                 graph('us')
 
+            elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
+                graph('united kingdom')
+            
             elif chat == 'newzealand':
 
                 graph("new zealand")
@@ -881,7 +884,8 @@ def main():
             gc = chat.replace('deathrate','')
             if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
                 death('us')
-
+            elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
+                death('united kingdom')
             elif chat == 'newzealand':
 
                 death("new zealand")
