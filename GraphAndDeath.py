@@ -15,6 +15,8 @@ http://tiny.cc/covidbot2020
 
 flag = True
 c = 0
+
+
 def graph(country):
     gdate = str(time.strftime(r"%m-%d-%Y", time.localtime()))
     dm1 = f'{gdate[3]}{gdate[4]}'
@@ -121,6 +123,7 @@ def death(country):
     plt.yticks(np.arange(min(x), 70, 4.0))
 
     plt.show()
+
 
 def sympcheck():
     print("Welcome to the COVID19 symptom checker\nHave you ever experienced these symptoms?")
@@ -280,7 +283,7 @@ while flag:
     elif chat == "exit":
       flag = False
     elif 'growthrate' in chat:
-      gc = chat.replace('growthrate', '')
+      chat = chat.replace('growthrate', '')
       if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
           graph('us')
       elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
@@ -326,10 +329,10 @@ while flag:
       elif chat == "equatorialguinea":
           graph("equatorial guinea")
       else:
-          graph(gc)
+          graph(chat)
 
     elif 'deathrate' in chat:
-        gc = chat.replace('deathrate', '')
+        chat = chat.replace('deathrate', '')
         if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
             death('us')
         elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
@@ -375,7 +378,7 @@ while flag:
         elif chat == "equatorialguinea":
             death("equatorial guinea")
         else:
-            death(gc)
+            death(chat)
     else:
       blurb = random.randint(1, 4)
       if blurb == 1:
@@ -388,5 +391,8 @@ while flag:
           answer = "I comprehend"
       elif chat.endswith("?"):
           answer = "I'm sorry but I can't answer that"
-    print(answer)
+    try:
+        print(answer)
+    except:
+        print("")
     c += 1

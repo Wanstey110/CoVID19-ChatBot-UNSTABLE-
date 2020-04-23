@@ -1,17 +1,30 @@
 import random
+
 import time
+
 import tkinter
+
 from tkinter import *
+
 import growthRate
+
 import cUpdates
+
 import graphs
+
 import matplotlib.pyplot as plt
 import requests
 import numpy as np
 import datetime
 from datetime import timedelta
+import numpy as np
+
+
 
 count = 0
+
+
+
 ##Main function
 
 def main():
@@ -760,9 +773,6 @@ def main():
             if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
                 graph('us')
 
-            elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
-                graph('united kingdom')
-            
             elif chat == 'newzealand':
 
                 graph("new zealand")
@@ -884,8 +894,7 @@ def main():
             gc = chat.replace('deathrate','')
             if chat == 'usa' or chat == 'us' or chat == 'u.s.a.' or chat == 'u.s.':
                 death('us')
-            elif chat == 'uk' or chat == 'unitedkingdom' or chat == 'u.k.':
-                death('united kingdom')
+
             elif chat == 'newzealand':
 
                 death("new zealand")
@@ -1165,9 +1174,15 @@ def main():
     ##Initialize TKinter
 
     root = Tk()  
+    scrollbar = Scrollbar(root)
+    scrollbar.pack( side = RIGHT, fill = Y )
 
+    mylist = Listbox(root, yscrollcommand = scrollbar.set )
+    for line in range(100):
+        mylist.insert(END, "This is line number " + str(line))
 
-
+    mylist.pack( side = LEFT, fill = BOTH )
+    scrollbar.config( command = mylist.yview )
     """  Images used in window  """
 
 
