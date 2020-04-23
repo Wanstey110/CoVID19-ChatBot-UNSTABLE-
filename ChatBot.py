@@ -10,7 +10,6 @@ import requests
 import numpy as np
 import datetime
 from datetime import timedelta
-import numpy as np
 
 count = 0
 ##Main function
