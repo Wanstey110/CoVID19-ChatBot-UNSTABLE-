@@ -12,11 +12,8 @@ import datetime
 from datetime import timedelta
 import numpy as np
 
-
-
 count = 0
-
-
+doc = open("Chat.txt", "r")
 
 ##Main function
 
@@ -512,15 +509,7 @@ def main():
 
 
 
-        global top
-
-        top = 'chat.txt'
-
-
-
-        global a
-
-        a = open(top, 'r')
+        a = open("chat.txt", 'r')
 
 
 
@@ -1203,15 +1192,6 @@ def main():
     ##Initialize TKinter
 
     root = Tk()  
-    scrollbar = Scrollbar(root)
-    scrollbar.pack( side = RIGHT, fill = Y )
-
-    mylist = Listbox(root, yscrollcommand = scrollbar.set )
-    for line in range(100):
-        mylist.insert(END, "This is line number " + str(line))
-
-    mylist.pack( side = LEFT, fill = BOTH )
-    scrollbar.config( command = mylist.yview )
     """  Images used in window  """
 
 
